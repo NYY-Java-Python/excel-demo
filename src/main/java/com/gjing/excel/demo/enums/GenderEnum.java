@@ -1,5 +1,6 @@
 package com.gjing.excel.demo.enums;
 
+
 import cn.gjing.tools.excel.EnumConvert;
 
 import javax.persistence.AttributeConverter;
@@ -10,6 +11,9 @@ import javax.persistence.AttributeConverter;
  * @author Gjing
  **/
 public enum GenderEnum {
+    /**
+     *
+     */
     MAN(1, "男"),
     WOMAN(2, "女");
     private int type;
@@ -66,6 +70,7 @@ public enum GenderEnum {
      * 自定义枚举转换器
      */
     public static class MyExcelEnumConvert implements EnumConvert<GenderEnum, String> {
+
         @Override
         public GenderEnum toEntityAttribute(String s) {
             return of(s);

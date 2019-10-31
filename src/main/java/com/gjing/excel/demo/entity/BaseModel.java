@@ -2,6 +2,7 @@ package com.gjing.excel.demo.entity;
 
 import cn.gjing.tools.excel.ExcelField;
 import cn.gjing.tools.excel.valid.DateValid;
+import cn.gjing.tools.excel.valid.NumericValid;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -19,6 +20,7 @@ public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ExcelField("id")
+    @NumericValid
     private Long id;
 
     @Column(name = "create_time", columnDefinition = "datetime")

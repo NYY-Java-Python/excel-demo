@@ -1,5 +1,6 @@
 package com.gjing.excel.demo.controller;
 
+import cn.gjing.tools.common.annotation.NotNull;
 import cn.gjing.tools.excel.BigTitle;
 import cn.gjing.tools.excel.ExcelFactory;
 import com.gjing.excel.demo.entity.User;
@@ -48,16 +49,16 @@ public class UserController {
     @GetMapping("/user_empty")
     @ApiOperation(value = "导出用户模板")
     public void exportUserEmpty(HttpServletResponse response) {
-        ExcelFactory.createWriter(User.class, response, "id", "createTime")
+        ExcelFactory.createWriter(User.class, response)
                 .write(null)
                 .flush();
     }
 
     @PostMapping("/user_import")
     @ApiOperation("导入")
+    @NotNull
     public ResponseEntity userImport(MultipartFile file) throws IOException {
         ExcelFactory.createReader(file.getInputStream(), User.class)
-                .headerIndex(4)
                 .read()
                 .listener(e -> userService.saveUserList(e));
         return ResponseEntity.ok("导入成功");

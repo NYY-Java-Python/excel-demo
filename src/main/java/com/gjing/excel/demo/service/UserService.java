@@ -1,6 +1,6 @@
 package com.gjing.excel.demo.service;
 
-import cn.gjing.tools.common.util.RandomUtil;
+import cn.gjing.tools.common.util.RandomUtils;
 import com.gjing.excel.demo.entity.User;
 import com.gjing.excel.demo.enums.GenderEnum;
 import com.gjing.excel.demo.repository.UserRepository;
@@ -26,7 +26,7 @@ public class UserService {
     public void saveUser(int num) {
         for (int i = 0; i < num; i++) {
             userRepository.saveAndFlush(User.builder()
-                    .userName("用户" + RandomUtil.generateNumber(5))
+                    .userName("用户" + RandomUtils.generateNumber(5))
                     .genderEnum(i%2==0? GenderEnum.MAN:GenderEnum.WOMAN)
                     .build());
         }
